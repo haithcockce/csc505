@@ -1,0 +1,220 @@
+Linear
+1
+{'rec_calls': 0, 'delta': 1.1920928955078125e-05, 'len': 2, 'func': 'mem', 'ops': 0}
+2
+{'rec_calls': 2, 'delta': 1.0967254638671875e-05, 'len': 3, 'func': 'mem', 'ops': 8}
+3
+{'rec_calls': 8, 'delta': 1.7881393432617188e-05, 'len': 4, 'func': 'mem', 'ops': 16}
+4
+{'rec_calls': 20, 'delta': 3.0994415283203125e-05, 'len': 5, 'func': 'mem', 'ops': 24}
+5
+{'rec_calls': 40, 'delta': 4.887580871582031e-05, 'len': 6, 'func': 'mem', 'ops': 32}
+6
+{'rec_calls': 70, 'delta': 7.605552673339844e-05, 'len': 7, 'func': 'mem', 'ops': 40}
+7
+{'rec_calls': 112, 'delta': 0.00011515617370605469, 'len': 8, 'func': 'mem', 'ops': 48}
+8
+{'rec_calls': 168, 'delta': 0.00016307830810546875, 'len': 9, 'func': 'mem', 'ops': 56}
+9
+{'rec_calls': 240, 'delta': 0.0002269744873046875, 'len': 10, 'func': 'mem', 'ops': 64}
+10
+{'rec_calls': 330, 'delta': 0.00034689903259277344, 'len': 11, 'func': 'mem', 'ops': 72}
+11
+{'rec_calls': 440, 'delta': 0.00039196014404296875, 'len': 12, 'func': 'mem', 'ops': 80}
+12
+{'rec_calls': 572, 'delta': 0.0004940032958984375, 'len': 13, 'func': 'mem', 'ops': 88}
+13
+{'rec_calls': 728, 'delta': 0.0006248950958251953, 'len': 14, 'func': 'mem', 'ops': 96}
+14
+{'rec_calls': 910, 'delta': 0.0007841587066650391, 'len': 15, 'func': 'mem', 'ops': 104}
+15
+{'rec_calls': 1120, 'delta': 0.0009291172027587891, 'len': 16, 'func': 'mem', 'ops': 112}
+16
+{'rec_calls': 1360, 'delta': 0.0011379718780517578, 'len': 17, 'func': 'mem', 'ops': 120}
+17
+{'rec_calls': 1632, 'delta': 0.001352071762084961, 'len': 18, 'func': 'mem', 'ops': 128}
+18
+{'rec_calls': 1938, 'delta': 0.0016028881072998047, 'len': 19, 'func': 'mem', 'ops': 136}
+19
+{'rec_calls': 2280, 'delta': 0.0020759105682373047, 'len': 20, 'func': 'mem', 'ops': 144}
+20
+{'rec_calls': 2660, 'delta': 0.0020949840545654297, 'len': 21, 'func': 'mem', 'ops': 152}
+21
+{'rec_calls': 3080, 'delta': 0.00215911865234375, 'len': 22, 'func': 'mem', 'ops': 160}
+22
+{'rec_calls': 3542, 'delta': 0.0024809837341308594, 'len': 23, 'func': 'mem', 'ops': 168}
+23
+{'rec_calls': 4048, 'delta': 0.0028009414672851562, 'len': 24, 'func': 'mem', 'ops': 176}
+24
+{'rec_calls': 4600, 'delta': 0.0033941268920898438, 'len': 25, 'func': 'mem', 'ops': 184}
+25
+{'rec_calls': 5200, 'delta': 0.00418400764465332, 'len': 26, 'func': 'mem', 'ops': 192}
+26
+{'rec_calls': 5850, 'delta': 0.004640102386474609, 'len': 27, 'func': 'mem', 'ops': 200}
+27
+{'rec_calls': 6552, 'delta': 0.0048100948333740234, 'len': 28, 'func': 'mem', 'ops': 208}
+28
+{'rec_calls': 7308, 'delta': 0.0050048828125, 'len': 29, 'func': 'mem', 'ops': 216}
+29
+{'rec_calls': 8120, 'delta': 0.005568027496337891, 'len': 30, 'func': 'mem', 'ops': 224}
+30
+{'rec_calls': 8990, 'delta': 0.007069110870361328, 'len': 31, 'func': 'mem', 'ops': 232}
+31
+{'rec_calls': 9920, 'delta': 0.007524967193603516, 'len': 32, 'func': 'mem', 'ops': 240}
+32
+{'rec_calls': 10912, 'delta': 0.007408857345581055, 'len': 33, 'func': 'mem', 'ops': 248}
+33
+{'rec_calls': 11968, 'delta': 0.008678197860717773, 'len': 34, 'func': 'mem', 'ops': 256}
+34
+{'rec_calls': 13090, 'delta': 0.010048866271972656, 'len': 35, 'func': 'mem', 'ops': 264}
+35
+{'rec_calls': 14280, 'delta': 0.00972890853881836, 'len': 36, 'func': 'mem', 'ops': 272}
+36
+{'rec_calls': 15540, 'delta': 0.011627912521362305, 'len': 37, 'func': 'mem', 'ops': 280}
+37
+{'rec_calls': 16872, 'delta': 0.011444807052612305, 'len': 38, 'func': 'mem', 'ops': 288}
+38
+{'rec_calls': 18278, 'delta': 0.013787984848022461, 'len': 39, 'func': 'mem', 'ops': 296}
+39
+{'rec_calls': 19760, 'delta': 0.013675928115844727, 'len': 40, 'func': 'mem', 'ops': 304}
+40
+{'rec_calls': 21320, 'delta': 0.016057968139648438, 'len': 41, 'func': 'mem', 'ops': 312}
+41
+{'rec_calls': 22960, 'delta': 0.015976905822753906, 'len': 42, 'func': 'mem', 'ops': 320}
+42
+{'rec_calls': 24682, 'delta': 0.017960071563720703, 'len': 43, 'func': 'mem', 'ops': 328}
+43
+{'rec_calls': 26488, 'delta': 0.019505023956298828, 'len': 44, 'func': 'mem', 'ops': 336}
+44
+{'rec_calls': 28380, 'delta': 0.020093917846679688, 'len': 45, 'func': 'mem', 'ops': 344}
+45
+{'rec_calls': 30360, 'delta': 0.021503925323486328, 'len': 46, 'func': 'mem', 'ops': 352}
+46
+{'rec_calls': 32430, 'delta': 0.023402929306030273, 'len': 47, 'func': 'mem', 'ops': 360}
+47
+{'rec_calls': 34592, 'delta': 0.024905920028686523, 'len': 48, 'func': 'mem', 'ops': 368}
+48
+{'rec_calls': 36848, 'delta': 0.026337862014770508, 'len': 49, 'func': 'mem', 'ops': 376}
+49
+{'rec_calls': 39200, 'delta': 0.02796006202697754, 'len': 50, 'func': 'mem', 'ops': 384}
+50
+{'rec_calls': 41650, 'delta': 0.029603004455566406, 'len': 51, 'func': 'mem', 'ops': 392}
+51
+{'rec_calls': 44200, 'delta': 0.03185105323791504, 'len': 52, 'func': 'mem', 'ops': 400}
+52
+{'rec_calls': 46852, 'delta': 0.03400897979736328, 'len': 53, 'func': 'mem', 'ops': 408}
+53
+{'rec_calls': 49608, 'delta': 0.03455686569213867, 'len': 54, 'func': 'mem', 'ops': 416}
+54
+{'rec_calls': 52470, 'delta': 0.03649616241455078, 'len': 55, 'func': 'mem', 'ops': 424}
+55
+{'rec_calls': 55440, 'delta': 0.0401148796081543, 'len': 56, 'func': 'mem', 'ops': 432}
+56
+{'rec_calls': 58520, 'delta': 0.04099893569946289, 'len': 57, 'func': 'mem', 'ops': 440}
+57
+{'rec_calls': 61712, 'delta': 0.044403076171875, 'len': 58, 'func': 'mem', 'ops': 448}
+58
+{'rec_calls': 65018, 'delta': 0.046730995178222656, 'len': 59, 'func': 'mem', 'ops': 456}
+59
+{'rec_calls': 68440, 'delta': 0.04837608337402344, 'len': 60, 'func': 'mem', 'ops': 464}
+60
+{'rec_calls': 71980, 'delta': 0.05180191993713379, 'len': 61, 'func': 'mem', 'ops': 472}
+61
+{'rec_calls': 75640, 'delta': 0.05396604537963867, 'len': 62, 'func': 'mem', 'ops': 480}
+62
+{'rec_calls': 79422, 'delta': 0.05635190010070801, 'len': 63, 'func': 'mem', 'ops': 488}
+63
+{'rec_calls': 83328, 'delta': 0.059072017669677734, 'len': 64, 'func': 'mem', 'ops': 496}
+64
+{'rec_calls': 87360, 'delta': 0.06148099899291992, 'len': 65, 'func': 'mem', 'ops': 504}
+65
+{'rec_calls': 91520, 'delta': 0.06529617309570312, 'len': 66, 'func': 'mem', 'ops': 512}
+66
+{'rec_calls': 95810, 'delta': 0.06686687469482422, 'len': 67, 'func': 'mem', 'ops': 520}
+67
+{'rec_calls': 100232, 'delta': 0.07194900512695312, 'len': 68, 'func': 'mem', 'ops': 528}
+68
+{'rec_calls': 104788, 'delta': 0.07376408576965332, 'len': 69, 'func': 'mem', 'ops': 536}
+69
+{'rec_calls': 109480, 'delta': 0.07781791687011719, 'len': 70, 'func': 'mem', 'ops': 544}
+70
+{'rec_calls': 114310, 'delta': 0.08145785331726074, 'len': 71, 'func': 'mem', 'ops': 552}
+71
+{'rec_calls': 119280, 'delta': 0.0853579044342041, 'len': 72, 'func': 'mem', 'ops': 560}
+72
+{'rec_calls': 124392, 'delta': 0.08774280548095703, 'len': 73, 'func': 'mem', 'ops': 568}
+73
+{'rec_calls': 129648, 'delta': 0.09109783172607422, 'len': 74, 'func': 'mem', 'ops': 576}
+74
+{'rec_calls': 135050, 'delta': 0.09641695022583008, 'len': 75, 'func': 'mem', 'ops': 584}
+75
+{'rec_calls': 140600, 'delta': 0.09932088851928711, 'len': 76, 'func': 'mem', 'ops': 592}
+76
+{'rec_calls': 146300, 'delta': 0.10423994064331055, 'len': 77, 'func': 'mem', 'ops': 600}
+77
+{'rec_calls': 152152, 'delta': 0.10782313346862793, 'len': 78, 'func': 'mem', 'ops': 608}
+78
+{'rec_calls': 158158, 'delta': 0.11091995239257812, 'len': 79, 'func': 'mem', 'ops': 616}
+79
+{'rec_calls': 164320, 'delta': 0.1159811019897461, 'len': 80, 'func': 'mem', 'ops': 624}
+80
+{'rec_calls': 170640, 'delta': 0.1218099594116211, 'len': 81, 'func': 'mem', 'ops': 632}
+81
+{'rec_calls': 177120, 'delta': 0.12523722648620605, 'len': 82, 'func': 'mem', 'ops': 640}
+82
+{'rec_calls': 183762, 'delta': 0.1296381950378418, 'len': 83, 'func': 'mem', 'ops': 648}
+83
+{'rec_calls': 190568, 'delta': 0.1348879337310791, 'len': 84, 'func': 'mem', 'ops': 656}
+84
+{'rec_calls': 197540, 'delta': 0.14041686058044434, 'len': 85, 'func': 'mem', 'ops': 664}
+85
+{'rec_calls': 204680, 'delta': 0.1462538242340088, 'len': 86, 'func': 'mem', 'ops': 672}
+86
+{'rec_calls': 211990, 'delta': 0.14936518669128418, 'len': 87, 'func': 'mem', 'ops': 680}
+87
+{'rec_calls': 219472, 'delta': 0.15424299240112305, 'len': 88, 'func': 'mem', 'ops': 688}
+88
+{'rec_calls': 227128, 'delta': 0.16110682487487793, 'len': 89, 'func': 'mem', 'ops': 696}
+89
+{'rec_calls': 234960, 'delta': 0.16598796844482422, 'len': 90, 'func': 'mem', 'ops': 704}
+90
+{'rec_calls': 242970, 'delta': 0.17038393020629883, 'len': 91, 'func': 'mem', 'ops': 712}
+91
+{'rec_calls': 251160, 'delta': 0.1782209873199463, 'len': 92, 'func': 'mem', 'ops': 720}
+92
+{'rec_calls': 259532, 'delta': 0.1843860149383545, 'len': 93, 'func': 'mem', 'ops': 728}
+93
+{'rec_calls': 268088, 'delta': 0.18877911567687988, 'len': 94, 'func': 'mem', 'ops': 736}
+94
+{'rec_calls': 276830, 'delta': 0.19751286506652832, 'len': 95, 'func': 'mem', 'ops': 744}
+95
+{'rec_calls': 285760, 'delta': 0.2017979621887207, 'len': 96, 'func': 'mem', 'ops': 752}
+96
+{'rec_calls': 294880, 'delta': 0.20845794677734375, 'len': 97, 'func': 'mem', 'ops': 760}
+97
+{'rec_calls': 304192, 'delta': 0.216231107711792, 'len': 98, 'func': 'mem', 'ops': 768}
+98
+{'rec_calls': 313698, 'delta': 0.2223949432373047, 'len': 99, 'func': 'mem', 'ops': 776}
+99
+{'rec_calls': 323400, 'delta': 0.22904205322265625, 'len': 100, 'func': 'mem', 'ops': 784}
+Quadratic
+1
+{'rec_calls': 2, 'delta': 1.5974044799804688e-05, 'len': 2, 'func': 'mem', 'ops': 8}
+2
+{'rec_calls': 20, 'delta': 2.6941299438476562e-05, 'len': 5, 'func': 'mem', 'ops': 24}
+3
+{'rec_calls': 168, 'delta': 0.00016999244689941406, 'len': 10, 'func': 'mem', 'ops': 56}
+4
+{'rec_calls': 1360, 'delta': 0.0011448860168457031, 'len': 17, 'func': 'mem', 'ops': 120}
+5
+{'rec_calls': 10912, 'delta': 0.008565902709960938, 'len': 26, 'func': 'mem', 'ops': 248}
+6
+{'rec_calls': 87360, 'delta': 0.06220698356628418, 'len': 37, 'func': 'mem', 'ops': 504}
+7
+{'rec_calls': 699008, 'delta': 0.4939699172973633, 'len': 50, 'func': 'mem', 'ops': 1016}
+8
+{'rec_calls': 5592320, 'delta': 3.946781873703003, 'len': 65, 'func': 'mem', 'ops': 2040}
+9
+{'rec_calls': 44739072, 'delta': 33.03384208679199, 'len': 82, 'func': 'mem', 'ops': 4088}
+10
+RECUSIVE DEPTH EXCEEDED

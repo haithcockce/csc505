@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{T} \PYG{o}{=} \PYG{p}{[]}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{edge} \PYG{n}{e}\PYG{p}{,} \PYG{n}{taken} \PYG{n}{in} \PYG{n}{arbitrary} \PYG{n+nl}{order}\PYG{p}{:}
+    \PYG{n}{T} \PYG{o}{=} \PYG{n}{T} \PYG{n}{with} \PYG{p}{\PYGZob{}}\PYG{n}{e}\PYG{p}{\PYGZcb{}}
+    \PYG{k}{if} \PYG{n}{T} \PYG{n}{has} \PYG{n}{a} \PYG{n}{cycle} \PYG{n+nl}{c}\PYG{p}{:}
+        \PYG{n}{let} \PYG{n}{e}\PYG{err}{\PYGZsq{}} \PYG{n}{be} \PYG{n}{a} \PYG{n}{maximum}\PYG{o}{\PYGZhy{}}\PYG{n}{weight} \PYG{n}{edge} \PYG{n}{on} \PYG{n+nl}{c}\PYG{p}{:}
+        \PYG{n}{T} \PYG{o}{=} \PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{p}{\PYGZob{}}\PYG{n}{e}\PYG{err}{\PYGZsq{}}\PYG{p}{\PYGZcb{}}
+\PYG{k}{return} \PYG{n}{T}
+\end{Verbatim}

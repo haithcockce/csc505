@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{my\PYGZus{}algo}\PYG{p}{():}
+    \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{1}
+\end{Verbatim}

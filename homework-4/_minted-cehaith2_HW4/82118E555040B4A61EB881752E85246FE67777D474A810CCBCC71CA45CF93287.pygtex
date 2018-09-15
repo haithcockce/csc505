@@ -1,0 +1,30 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{compute\PYGZus{}low}\PYG{p}{(}\PYG{n}{G\PYGZus{}pi}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Base case.}
+    \PYG{n}{\PYGZus{}rec\PYGZus{}compute\PYGZus{}low}\PYG{p}{(}\PYG{n}{G\PYGZus{}pi}\PYG{o}{.}\PYG{n}{V}\PYG{p}{,} \PYG{n}{G\PYGZus{}pi}\PYG{o}{.}\PYG{n}{E}\PYG{p}{,} \PYG{n}{G\PYGZus{}pi}\PYG{o}{.}\PYG{n}{root}\PYG{p}{)}
+
+\PYG{k}{def} \PYG{n+nf}{\PYGZus{}rec\PYGZus{}compute\PYGZus{}low}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{E}\PYG{p}{,} \PYG{n}{v}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} Assume low is v.d until proven otherwise}
+    \PYG{n+nb}{min} \PYG{o}{=} \PYG{n}{v}\PYG{o}{.}\PYG{n}{d}
+
+    \PYG{c+c1}{\PYGZsh{} Gather min back\PYGZus{}edge from children if applicable}
+    \PYG{k}{for} \PYG{n}{u} \PYG{o+ow}{in} \PYG{n}{children}\PYG{p}{(}\PYG{n}{v}\PYG{p}{):}  \PYG{c+c1}{\PYGZsh{} does nothing if no children}
+        \PYG{c+c1}{\PYGZsh{} Just grab first one or keep only the min back edge}
+        \PYG{n}{child\PYGZus{}back\PYGZus{}edge} \PYG{o}{=} \PYG{n}{\PYGZus{}rec\PYGZus{}compute\PYGZus{}low}\PYG{p}{(}\PYG{n}{V}\PYG{p}{,} \PYG{n}{E}\PYG{p}{,} \PYG{n}{u}\PYG{p}{)}
+        \PYG{k}{if} \PYG{n}{child\PYGZus{}back\PYGZus{}edge}\PYG{o}{.}\PYG{n}{w}\PYG{o}{.}\PYG{n}{d} \PYG{o}{\PYGZlt{}} \PYG{n+nb}{min}\PYG{p}{:}
+            \PYG{n+nb}{min} \PYG{o}{=} \PYG{n}{child\PYGZus{}back\PYGZus{}edge}\PYG{o}{.}\PYG{n}{w}\PYG{o}{.}\PYG{n}{d}
+
+    \PYG{c+c1}{\PYGZsh{} Check if a back edge exists from us to some ancestor to propagate up}
+    \PYG{c+c1}{\PYGZsh{} starting with the minimum child back edge propagated up to us}
+    \PYG{k}{for} \PYG{n}{back\PYGZus{}edge} \PYG{o+ow}{in} \PYG{n}{back\PYGZus{}edges}\PYG{p}{(}\PYG{n}{v}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{back\PYGZus{}edge}\PYG{o}{.}\PYG{n}{w}\PYG{o}{.}\PYG{n}{d} \PYG{o}{\PYGZlt{}} \PYG{n+nb}{min}\PYG{p}{:}
+            \PYG{n+nb}{min} \PYG{o}{=} \PYG{n}{back\PYGZus{}edge}\PYG{o}{.}\PYG{n}{w}\PYG{o}{.}\PYG{n}{d}
+
+    \PYG{c+c1}{\PYGZsh{} Update low if a back edge was found and is less than v.d}
+    \PYG{n}{v}\PYG{o}{.}\PYG{n}{low} \PYG{o}{=} \PYG{n+nb}{min}
+
+    \PYG{c+c1}{\PYGZsh{} return descendant.low or v.low up. NOTE if no back edge exists,}
+    \PYG{c+c1}{\PYGZsh{} v.low will be propagated up and v.low \PYGZlt{} parent v.low, so can safely}
+    \PYG{c+c1}{\PYGZsh{} propagate up.}
+    \PYG{k}{return} \PYG{n+nb}{min}
+\end{Verbatim}

@@ -1,0 +1,42 @@
+Linear
+1
+{'rec_calls': 0, 'delta': 3.0994415283203125e-06, 'len': 2, 'func': 'rec', 'ops': 0}
+2
+{'rec_calls': 2, 'delta': 7.152557373046875e-06, 'len': 3, 'func': 'rec', 'ops': 8}
+3
+{'rec_calls': 8, 'delta': 9.059906005859375e-06, 'len': 4, 'func': 'rec', 'ops': 16}
+4
+{'rec_calls': 26, 'delta': 1.9788742065429688e-05, 'len': 5, 'func': 'rec', 'ops': 24}
+5
+{'rec_calls': 80, 'delta': 5.2928924560546875e-05, 'len': 6, 'func': 'rec', 'ops': 32}
+6
+{'rec_calls': 242, 'delta': 0.00019097328186035156, 'len': 7, 'func': 'rec', 'ops': 40}
+7
+{'rec_calls': 728, 'delta': 0.00031304359436035156, 'len': 8, 'func': 'rec', 'ops': 48}
+8
+{'rec_calls': 2186, 'delta': 0.000843048095703125, 'len': 9, 'func': 'rec', 'ops': 56}
+9
+{'rec_calls': 6560, 'delta': 0.002544879913330078, 'len': 10, 'func': 'rec', 'ops': 64}
+10
+{'rec_calls': 19682, 'delta': 0.008378982543945312, 'len': 11, 'func': 'rec', 'ops': 72}
+11
+{'rec_calls': 59048, 'delta': 0.02265191078186035, 'len': 12, 'func': 'rec', 'ops': 80}
+12
+{'rec_calls': 177146, 'delta': 0.06788206100463867, 'len': 13, 'func': 'rec', 'ops': 88}
+13
+{'rec_calls': 531440, 'delta': 0.2037198543548584, 'len': 14, 'func': 'rec', 'ops': 96}
+14
+{'rec_calls': 1594322, 'delta': 0.6109480857849121, 'len': 15, 'func': 'rec', 'ops': 104}
+15
+{'rec_calls': 4782968, 'delta': 1.8308069705963135, 'len': 16, 'func': 'rec', 'ops': 112}
+16
+{'rec_calls': 14348906, 'delta': 5.490356922149658, 'len': 17, 'func': 'rec', 'ops': 120}
+17
+{'rec_calls': 43046720, 'delta': 16.462502002716064, 'len': 18, 'func': 'rec', 'ops': 128}
+18
+{'rec_calls': 129140162, 'delta': 51.94358992576599, 'len': 19, 'func': 'rec', 'ops': 136}
+19
+{'rec_calls': 387420488, 'delta': 189.34022402763367, 'len': 20, 'func': 'rec', 'ops': 144}
+20
+{'rec_calls': 1162261466, 'delta': 450.3344359397888, 'len': 21, 'func': 'rec', 'ops': 152}
+

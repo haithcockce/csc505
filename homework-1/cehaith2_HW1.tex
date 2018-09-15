@@ -1,0 +1,729 @@
+%%% Template originaly created by Karol Kozioł (mail@karol-koziol.net) and modified for ShareLaTeX use
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tgtermes}
+\usepackage[
+pdftitle={CSC 505 Homework}, 
+pdfauthor={Charles Haithcock},
+colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,bookmarks=true,
+bookmarksopenlevel=2]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+
+\usepackage{geometry}
+\geometry{total={210mm,297mm},
+left=25mm,right=25mm,%
+bindingoffset=0mm, top=20mm,bottom=20mm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        %
+% Custom package imports %
+%                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{minted}  % Specifically for code and syntax highlighting
+\usepackage{framed}
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\linespread{1.3}
+
+\newcommand{\linia}{\rule{\linewidth}{0.5pt}}
+
+% custom theorems if needed
+\newtheoremstyle{mytheor}
+    {1ex}{1ex}{\normalfont}{0pt}{\scshape}{.}{1ex}
+    {{\thmname{#1 }}{\thmnumber{#2}}{\thmnote{ (#3)}}}
+
+\theoremstyle{mytheor}
+\newtheorem{defi}{Definition}
+
+% my own titles
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{center}
+\vspace{2ex}
+{\huge \textsc{\@title}}
+\vspace{1ex}
+\\
+\linia\\
+\@author \hfill \@date
+\vspace{4ex}
+\end{center}
+}
+\makeatother
+%%%
+
+% custom footers and headers
+\usepackage{fancyhdr,lastpage}
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+%\lfoot{Assignment \textnumero{} 1}
+%\cfoot{}
+%\rfoot{Page \thepage\ /\ \pageref*{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\newcommand\ceil[1]{\lceil#1\rceil}
+
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        %
+% Custom newcommand defs %
+%                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%----------%%%----------%%%----------%%%----------%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+% Begin Document, Title
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{CSC 505 - Homework 1}
+
+\author{Charles Haithcock}
+
+\date{1/27/2017}
+
+\maketitle
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Post title - Question 1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{(8 points) Goal: Practice analysis of algorithms.}
+
+Consider the algorithm represented by the following program fragment; assume 
+that x and n are non-negative.
+
+\begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    linenos
+]{c}
+    BAR(int x, int n)
+    {
+        int sum=0;
+        if x>10 then {
+            for (int i=1; i<=n2; i++) {
+                sum=sum*i;
+            }
+        } else {
+            for (int i=1; i<=n; i++) {
+                sum=sum+i;
+            }
+        }
+        return x + sum;
+    }
+\end{minted}
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section a
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item[\textbf{a)}] \textbf{(2 points) What value (as a function of x and n)
+    does BAR return? For full marks, please justify your solution.}
+    
+    Most logic structures have mathematical counterparts; loops are series where
+    the loop body indicates if the series is a sum or product series, if-
+    statements create piecewise functions, etc.
+    
+    In regards to the code snippet, when taken literally from the code, lines 5-
+    7 create a series, in which the body of the loop, line 6, indicates the 
+    series is a product series with $i$ starting at $1$ and going until $n^2$ 
+    and being incremented along the way to itself. As such, lines 5-7 can be 
+    written as $0 \prod_{i=1}^{n^2} i$.
+    
+    Similarly, line 10 being a sum indicates lines 9-11 is a summation of $i$ as
+    it increases towards $n$ with $sum$. As such, lines 9-11 can be written as
+    $0 + \sum_{i=1}^{n} i$.
+    
+    An if-statement encapsulates lines 5-7 and 9-11. The conditional of the 
+    if-statement therein becomes the conditional for the piecewise function. As
+    such, lines 4-12 can be written as 
+    \begin{align}
+        \begin{cases}
+            0 \prod_{i=1}^{n^2} i & x > 10 \\
+            0 + \sum_{i=1}^{n} i  & \text{otherwise}. 
+      \end{cases}
+    \end{align}
+    Finally, $sum$ is added to $x$ before returning, so the piecewise function
+    will need to be summed with $x$ as the last operation, written as such: 
+    \begin{align}
+        x + 
+        \begin{cases}
+            0 \prod_{i=1}^{n^2} i &x > 10 \\
+            0 + \sum_{i=1}^{n} i  & \text{otherwise}
+        \end{cases}
+    \end{align}
+    The full mathematical representation of the code snippet is as follows:
+    \begin{align}
+      \text{BAR}(x, n) = x + 
+      \begin{cases}
+        0 \prod_{i=1}^{n^2} i &x > 10 \\
+        0 + \sum_{i=1}^{n} i  &\text{otherwise} 
+      \end{cases}
+    \end{align}
+    This, however can be simplified to the following since $sum = 0$ before 
+    the product series and the sum has a known evaluated form: 
+    \begin{align}
+        \text{BAR}(x, n) = x + 
+        \begin{cases}
+            \frac{n(n+1)}{2} & x \le 10 \\
+            0                & \text{otherwise} 
+        \end{cases}
+    \end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item[\textbf{b)}] \textbf{(4 points) Use only ARITHMETIC operations 
+    (\texttt{*} in line 6, and \texttt{+} in lines 10 \& 13) as basic operations
+    Compute the exact worst-case running time of BAR as a function of x and n.
+    For full marks, please justify your solution.}
+    
+    Below is the code again except with analysis annotations assuming no 
+    compiler optimizations:
+    \begin{minted}[
+        frame=lines,
+        framesep=2mm,
+        baselinestretch=1.2,
+        fontsize=\footnotesize,
+        mathescape=true,
+        linenos
+    ]{c}
+        BAR(int x, int n)                    // Cost   Times ran
+        {                                    // ----------------
+            int sum=0;                       //  $c_1$      $1$
+            if x>10 then {                   //  $c_2$      $1$
+                for (int i=1; i<=n2; i++) {  //  $c_3$      $n$
+                    sum=sum*i;               //  $c_4$      $n^2-1$
+                }                            //
+            } else {                         //
+                for (int i=1; i<=n; i++) {   //  $c_5$      $n$
+                    sum=sum+i;               //  $c_6$      $n-1$
+                }                            //
+            }                                //
+            return x + sum;                  //  $c_7$      $1$
+        }
+    \end{minted}
+    However, given the if-statement, lines 4-7 and 8-12 are mutually exclusive
+    and can not both run in the same function call, because of this, each 
+    section must be compared for which would produce the largest time: 
+    $n(n^2-1) > n(n-1)$ when $n > 1$. As such, lines 5-7 are chosen to provide
+    us a larger running time. 
+    
+    With the above choice, the total worst-running time then becomes:
+    \begin{align}
+        T(n) = c_1 + c_2 + c_3 n + c_4 (n^2 - 1) + c_7
+    \end{align}    
+    To simplify, all constants, $c*$ can be assumed constant value, $1$, and 
+    eventually just dropped: 
+    \begin{align}
+        T(n) = 1 + 1 + 1n + 1(n^2 - 1) + 1 = n^2 + n + 2 = n^2 + n
+    \end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \item[\textbf{c)}] \textbf{(2 points) Assume that \texttt{x} remains 
+    constant while n goes to infinity. Derive a tight, big-Oh expression 
+    (dependent on n) for the running time of BAR. For full marks, please justify
+    your solution.}
+    
+    From the definition of $O(g(n))$: 
+    \begin{align}
+        0 \le f(n) \le cg(n)
+    \end{align}
+    Prove:
+    \begin{align}
+        0 \le n^2 + n \in O(n^2)
+    \end{align}
+    Proof:
+    \begin{align}
+        0 & \le n^2 + n \le cn^2        & \text{ when } n \ge 1  \\
+        0 & \le 1 + \frac{1}{n} \le c   & \text{ when } n \ge 1  
+    \end{align}
+    Which implies:
+    \begin{align}
+        & \text{when } n \ge 1, c = 2 \\
+        & \text{so when } n_0 = 1, c = 2, n^2 + n \in O(n^2)
+    \end{align}
+\end{enumerate}
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Question 2
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{(12 points) Purpose: Learn about Horner’s rule for evaluating
+polynomials, practice running time analysis, learn how loop invariants are used
+to prove the correctness of an algorithm. Tip: re-read Section 2.1 in our
+textbook. Please solve problem 2-3 [a-d] on page 41 of the textbook.}
+
+From the text: 
+\begin{framed}
+    The following code fragment implements Horner's rule for evaluating a
+    polynomial
+    \begin{flalign}
+        \nonumber P(x) & = \sum_{k=0}^{n} a_k x^k && \\ 
+        \nonumber      & = a_0 + x(a_1 + x(a_2 + \cdots  + x(a_{n-1} + xa_n) 
+                                 \cdots )), &&
+    \end{flalign}
+    given the coefficients $a_0, a_1, \ldots. a_n$ and a value for $x$: \\
+    1 \quad $y=0$ \\
+    2 \quad \textbf{for} $i=n$ \textbf{downto} $0$ \\
+    3 \qquad \quad $y = a_i + x \cdot y$ \\
+    
+    \begin{enumerate}
+        \item[\textbf{\textit{a.}}] In terms of $\Theta$-notation, what is the
+            running time of this code fragment for Horner's rule?
+    \end{enumerate}
+\end{framed}
+
+The running time of the code is straightforward; line 1, being a value
+assignment, is constant time ($\Theta (1)$); line 2, being a loop inherently
+containing a loop termination check and iteration term decrement each performed 
+$n$ times is $\Theta(n)$; line 3 is a sum and product performed $n-1$ times (as
+the body of the loop is executed $1$ time less than the loop check). As such,
+the total running time is $T(P(x)) = 1 + n + (n-1) = 2n$. In terms of $\Theta$-
+notation, $T(P(x)) = \Theta(n)$ when $n_0 = 1$ and $c = 2$.
+
+\begin{framed}
+    \begin{enumerate}
+        \item[\textbf{\textit{b.}}] Write pseudocode to implement the naive
+            polynomial-evaluation algorithm that computes each term of the
+            polynomial from scratch. What is the running time of this algorithm?
+            How does it compare to Horner's rule?
+    \end{enumerate}
+\end{framed}
+
+\begin{minted}[
+    frame=lines,
+    framesep=2mm,
+    baselinestretch=1.2,
+    fontsize=\footnotesize,
+    mathescape=true,
+    linenos
+]{c}
+    NAIVE_EVAL(int[] A, int x):     // Cost  Times Ran
+        int x_init = x              // $c_0$      $1$
+        int sum = 0                 // $c_1$      $1$
+        for i = 0 upto A.length:    // $c_2$      $n$
+            x = (x_init ** i)       // $c_3$      $n-1$
+            A[i] += A[i] * x        // $c_4$      $n-1$
+        for i = 0 upto A.length:    // $c_5$      $n$
+            sum += A[i]             // $c_6$      $n-1$
+        return sum                  // $c_7$      $1$
+\end{minted}
+The pseudocode assumes powers are constant operations and any constant 
+operation has a running time of $\Theta(1)$. Here, the analysis is similar to 
+Horner's rule: 
+
+\begin{align}
+    T(g(n)) & = c_0 + c_1 + c_2 n + c_3 (n-1) + c_4 (n-1) + c_5 n + c_6 (n-1) 
+    + c_7 \\
+            & = 1 + 1 + n + n - 1 + n - 1 + n + n - 1 + 1 \\
+            & = 5n \\
+            & = \Theta(n)
+\end{align}
+
+However, when not obfuscating details, the naive approach actually runs 2.5
+longer. 
+
+\begin{framed}
+    \begin{enumerate}
+        \item[\textbf{\textit{c.}}] Consider the following loop invariant:
+        
+            At the start of each iteration of the \textbf{for} loop of lines 
+            2-3, 
+            \begin{flalign}
+                \nonumber y = \sum_{k=0}^{n-(i+1)} a_{k+i+1} x^k . && 
+            \end{flalign}
+            Interpret a summation with no terms as equaling $0$. Following the 
+            structure of the loop invariant proof presented in this chapter, use
+            this loop invariant to show that, at termination, 
+            \begin{flalign}
+                \nonumber y = \sum_{k=0}^{n} a_k x^k  &&
+            \end{flalign}
+    \end{enumerate}
+\end{framed}
+
+\begin{itemize}
+    \item[\textbf{Initialization}] Prior to the first iteration of the first loop,
+    variables are initialized as $y=0$ and $i=n$. Since the loop terminates when
+    $i=0$, for the sake of analysis, $n$, and subsequently $i$ are assumed $n,i >
+    0$. In such a case, no terms have yet been evaluated, so $y=0$ still. The
+    loop maintains this, as, when substituting the appropriate values in, the
+    summation evaluates to 
+    \begin{align}
+        y & = \sum_{k=0}^{n-(n+1)} a_{k+n+1} x^{k} \\
+          & = \sum_{k=0}^{-1} a_{k+n+1} x^{k} \\
+          & = 0
+    \end{align}
+    or the zero sum as no such terms are possibly defined. 
+
+    \item[\textbf{Maintenance}] Horner's rule operates from the notion that the 
+    $i^{th}$ term is evaluated as $a_i x^1$ wherein the terms $i-1$ down to the
+    $0^{th}$ term are yet to be evaluated but $i+1$ up to the $n^{th}$ term are
+    evaluated further by iteratively but implicitly multiplying them by the 
+    variable.
+    
+    The summation describes this as
+    \begin{align}
+        y & = \sum_{k=0}^{n-(i+1)} a_{k+i+1} x^k \\
+          & = a_{i+1} + x(a_{i+2} + x( \cdots + x(a_{n-1} + a_n x)\cdots )) \\
+          & = a_{i+1} x^{0} + a_{i+2} x^{1} + \cdots + a_{n-1} x^{n-(i+2)}
+                   + a_n x^{n-(i+1)}
+    \end{align}
+    The loop maintains this, as by the $i^{th}$ iteration, the intermediate sum,
+    $y$, will have iteratively multiplied $x$ to itself $n-(i+1)$ times. Within
+    each iteration, the $a_{i}$ term is also summed in. Decrementing $i$ in line
+    2 reestablishes the loop invariant so, when evaluating line 3, the next term
+    is partially evaluated while every other term is evaluated further and 
+    closer to their original degree.
+    
+    \item[\textbf{Termination}] Upon termination, $i=-1$ and fails the check of 
+    $i \ge 0$. When substituted into the prior partial summation
+    \begin{align}
+        y & = \sum_{k=0}^{n-(i+1)} a_{k+i+1} x^k \\
+          & = \sum_{k=0}^{n} a_{k} x^k \\
+          & = a_0 + x(a_1 + x(a_2 + \cdots  + x(a_{n-1} + xa_n) \cdots ))
+    \end{align}
+    or Horner's Rule. 
+    
+    The code maintains this because at termination, each $a_i$ will have been
+    added to the sum at iteration $i$. Likewise, by termination, the $i^{th}$
+    term will have had $x$ multiplied to itself $i$ times via line 3. 
+\end{itemize}
+
+
+\begin{framed}
+    \begin{enumerate}
+        \item[\textbf{\textit{d.}}] Conclude by arguing that the given code 
+            fragment correctly evaluates a polynomial characterized by the 
+            coefficients $a_0, a_1, \ldots, a_n$.
+    \end{enumerate}
+\end{framed}
+
+The code fragment correctly evaluates a polynomial; the code first grabs the 
+largest term, and multiplies it by $x$. At each iteration the next term is next
+term is partially calculated by summing the product of $x$ with the previous 
+partial summation with $a_i$. Upon termination, each $a_i$ will have been 
+implicitly multiplied with $x$ $i$ times and summed with the rest of the terms.
+
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Question 3
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Purpose: Practice working with asymptotic notation. Please solve (12
+points) 3-2 on page 61, (6 points) 3-4 [a-c] on page 62. For full marks justify 
+your solutions.}
+
+From the text: 
+
+\begin{framed}
+    \textbf{\textit{3-2 Relative asymptotic growths}} \\
+    Indicate, for each pair of expressions $(A, B)$ in the table below, whether
+    $A$ is $O, o, \Omega, \omega,$ or $\Theta$ of $B$. Assume that $k \ge 1,
+    \epsilon > 0,$ and $c > 1$ are constants. Your answer should be in the form
+    of the table with "yes" or "no" written in each box.
+\end{framed}
+\begin{tabular}{c c c | c | c | c | c | c |}
+     & $A$ & $B$ & $O$ & $o$ & $\Omega$ & $\omega$ & $\Theta$ \\ \hline
+    \textbf{\textit{a.}} & $lg^k n$ & $n^\epsilon$ & Yes & Yes & No & No & No \\ 
+    \hline
+    \textbf{\textit{b.}} & $n^k$ & $c^n$ & Yes & Yes & No & No & No \\
+    \hline
+    \textbf{\textit{c.}} & $\sqrt{n}$ & $n^{\sin n}$ & No & No & No & No & No \\
+    \hline
+    \textbf{\textit{d.}} & $2^n$ & $2^{n/2}$ & No & No & Yes & Yes & No \\
+    \hline
+    \textbf{\textit{e.}} & $n^{\log c}$ & $c^{\log n}$ & Yes & No & Yes & No & 
+    Yes
+    \\ \hline
+    \textbf{\textit{f.}} & $\log (n!)$ & $\log (n^n)$ & Yes & No & Yes & No & 
+    Yes \\ 
+    \hline
+\end{tabular}
+
+\begin{itemize}
+    \item[\textbf{\textit{a.}}] 
+    \begin{align}
+        \lim_{n\to\infty} \frac{\log(n)^k}{n^\epsilon} &= \frac{\infty}{\infty}  
+            \quad \text{L'Hopital's Rule!} \\
+        \frac{d\frac{\log(n)^k}{n^\epsilon}}{dn} &=         
+            \frac{k(\log(n))^{k-1}}{n\ln(10)\epsilon n^{\epsilon - 1}} = 
+            \frac{k(\log(n))^{k-1}}{\ln(10)\epsilon n^{\epsilon}}
+            \quad \text{L'Hopital's Rule!} \\
+        \frac{d\frac{k(\log(n))^{k-1}}{\ln(10)\epsilon n^{\epsilon}}}{dn} &= 
+            \frac{k(k-1)(\log(n))^{k-2}}{n\ln(10)^2 \epsilon^2 n^{\epsilon-1}} =
+            \frac{k(k-1)(\log(n))^{k-2}}{\ln(10)^2 \epsilon^2 n^{\epsilon}}
+            \quad \text{L'Hopital's Rule!} \\
+        \frac{d^k\frac{\log(n)^k}{n^\epsilon}}{d^kn} &= 
+            \frac{k!}{\ln(10)^k\epsilon^kn^\epsilon}; 
+            \lim_{n\to\infty}\frac{k!}{\ln(10)^k\epsilon^kn^\epsilon} = 0
+    \end{align}
+    
+    \item[\textbf{\textit{b.}}]
+    \begin{align}
+        \lim_{n\to\infty}\frac{n^k}{c^n} &= \frac{\infty}{\infty}; \quad 
+            \text{L'Hopital's Rule!} \\
+        \frac{d\frac{n^k}{c^n}}{dn} &= \frac{kn^{k-1}}{\ln(c)^kc^n}; \quad    
+            \text{L'Hopital's Rule!} \\
+        \frac{d\frac{kn^{k-1}}{\ln(c)c^n}}{dn} &= \frac{k(k-1)n^{k-2}}
+            {\ln(c)^2 c^n}; \quad \text{L'Hopital's Rule!} \\
+        \frac{d^k\frac{n^k}{c^n}}{d^kn} &= \frac{k!}{\ln(c)^kc^n}; 
+            \lim_{n\to\infty}\frac{k!}{\ln(c)^kc^n;} = 0
+    \end{align}
+    
+    \item[\textbf{\textit{c.}}] $\sin(n)$ ranges in value $[-1, 1]$, so the limit is evaluated for both:
+    \begin{align}
+        \lim_{n\to\infty}\frac{\sqrt{n}}{n^{-1}} & = \infty; 
+            \lim_{n\to\infty}\frac{\sqrt{n}}{n} = \frac{\infty}{\infty}; 
+            \quad \text{L'Hopital's Rule!} \\
+        \frac{d\frac{\sqrt{n}}{n}}{dn}& = \frac{\frac{1}{2\sqrt{n}}}{1} = 
+            \frac{1}{2\sqrt{n}} 
+    \end{align}
+    From the above, when $\sin(n) = -1, \sqrt{n} \in \omega(n^{\sin(n)})$, 
+    however, when $\sin(n) = 1, \sqrt{n} \in \Theta(\sin(n))$. Due to this 
+    oscilating behavior, none apply. 
+    
+    \item[\textbf{\textit{d.}}] 
+    \begin{align}
+        \lim_{n\to\infty}\frac{2^n}{2^{\frac{n}{2}}} = \lim_{n\to\infty}
+            2^{\frac{n}{2}} = \infty
+    \end{align}
+    
+    \item[\textbf{\textit{e.}}]
+    \begin{align} 
+        \log(n^{\log(c)}) = \log(c)\log(n) \\
+        \log(c^{\log(n)}) = \log(n)\log(c) \\
+        \lim_{n\to\infty} \frac{\log(c)\log(n)}{\log(c)\log(n)} = 1
+    \end{align}    
+    
+    \item[\textbf{\textit{f.}}] 
+    \begin{align}
+        \log(n!) = \sum_{i=0}^{n} \log(i) = n\log(n) \\
+        \log(n^n) = n\log(n) \\
+        \log(n!) = \log(n^n) \implies \lim_{n\to\infty} 
+            \frac{\log(n!)}{\log(n^n)} = 1
+    \end{align}
+    Note above Stirling's approximation: $\log(n!) = \sum_{i=0}^{n} \log(i)$ [1]
+\end{itemize}
+
+
+\begin{framed}
+    \textbf{\textit{Asymptotic notation properties}}
+    
+    Let $f(n)$ and $g(n)$ be asymptotically positive functions. Prove or 
+    disprove each of the following conjectures:
+        
+    \begin{enumerate}
+        \item[\textbf{\textit{a.}}] $f(n) = O(g(n)) \implies g(n) = O(f(n))$
+    \end{enumerate}
+\end{framed}
+
+If $f(n) = O(g(n))$, then $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$ must at 
+least hold true. This is to say $g(n)$ grows faster than $f(n)$. However, if 
+$g(n) = O(f(n))$, then $\lim_{x \to \infty} \frac{g(n)}{n(n)} = 0$ which is
+impossible simply because $g(n)$ grows faster than $f(n)$ for large values of
+$n$. 
+
+As a counter example, consider $f(n) = n$ and $g(n) = n^2$. Here, while we do 
+not have a tight bound, $\lim_{n \to \infty} \frac{f(n)}{g(n)} = 0$ so $g(n)$ is
+at least an upper bound. That being said, $n^2 \notin O(n)$ since $\lim_{n \to \infty} \frac{g(n)}{f(n)} = \infty$ here. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section b
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{framed}
+    \begin{enumerate}
+        \item[\textbf{\textit{b.}}] $f(n) + g(n) = \Theta(\text{min}(f(n), 
+        g(n)))$
+    \end{enumerate}
+\end{framed}
+As a counter example, consider $f(n) = n^2 \text{ and } g(n) = n \implies n^{2} +
+n \notin \Theta(n)$. As proof by contradiction, assume $n^{2} + n \notin 
+\Theta(n)$. If this is true, then
+\begin{align}
+    f(n) \in \Theta(g(n)) & \implies \Omega(g(n)) \cup O(g(n)) \\
+                          & \implies f(n) \in O(g(n)) = n^2 \in O(n)
+\end{align}
+From the definition of O-notation, $0 \le n^2 \le cn$, which is impossible as
+$c$ is a constant and, as $n$ grow arbitrarily large, a value of $c$ exists where
+the inequality does not hold true. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section c
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{framed}
+    \begin{enumerate}
+        \item[\textbf{\textit{c.}}] $f(n) = O(g(n)) \implies \log(f(n)) = 
+        O(\log(g(n))), \text{where } \log(g(n)) \ge 1$ and $f(n) \ge 1$ for all
+        sufficiently large $n$.
+    \end{enumerate}
+\end{framed}
+\begin{align}
+    f(n) = O(g(n)) & \implies 0 \le f(n) \le cg(n), c > 0, n \ge n_0 \\
+                   & \implies 0 \le \log(f(n)) \le \log(cg(n)) \\
+                   & \implies 0 \le \log(f(n)) \le \log(c) + \log(g(n)) \\ 
+                   & \implies \log(f(n)) = O(\log(g(n)))
+\end{align}
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Question 4
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{(5 points) Purpose: Practice working with asymptotic notation. Rank the
+following functions by order of asymptotic growth; that is, find an arrangement
+$g_1, g_2, \ldots$ of the below functions with $g_1 \in \Omega(g_2), g_2 \in
+\Omega(g_3), \ldots$ Mark the functions that are asymptotically equivalent, i.e.
+$g_k \in \Omega(g_{k+1})$ by a *. Here, lg indicates the binary logarithm.
+$3\sqrt{n}, \log(n^n), n^{\frac{2}{3}}, 2^{-n}, \frac{n}{2}+\log(n),
+\sqrt(n)\log(n)$}
+
+\begin{align}
+    2^{-n}              \\
+    3\sqrt{n}           \\
+    \sqrt(n)\log(n) *    \\ 
+    n^{\frac{2}{3}} *    \\
+    \frac{n}{2}+\log(n) \\
+    \log(n^n)           \\
+\end{align}
+The above is based largely on the following notions: 
+\begin{itemize}
+    \item Since $\lim_{x\to\infty}2^{-n} = 0$, and the rest of the functions
+    grow monotonically, this function has the lowest growth rate
+    \item $3\sqrt{n}$ grows slower than $\sqrt(n)\log(n)$ when $\log(n) > 9$
+    \item $\sqrt(n)\log(n)$ grows slower than $\frac{n}{2}+\log(n)$ as
+    $\frac{n}{2}$ grows linearly and is added to $\log(n)$ while 
+    $3\sqrt{n}, \sqrt(n)\log(n), \text{ and } n^{\frac{2}{3}}$ do not grow
+    linearly 
+    \item Despite $\log(n^n)$ being a logarithm, having the $n$ be both the base
+    and the power for the exponent means extremely quick growth
+    \item $n^{\frac{2}{3}}$ and $\sqrt{n}\log(n)$ grow similarly as their growths
+    are dominated by a root operation. 
+\end{itemize}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Question 5
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{(6 points) Purpose: Practice proving asymptotic relationships. In proving big-oh and big-omega bounds there is a relationship between the c that is used and the smallest $n_0$ that will work (for O, the smaller the c, the larger the $n_0$; for big-omega, the larger the c, the larger the $n_0$). In each of the following situations, describe (the smallest integer) $n_0$ as a function of c. You'll have to use the ceiling function to ensure that $n_0$ is an integer. Your solution should also give you a lower bound (for big-oh) or an upper bound (for big-omega) on the constant c.}
+
+\begin{enumerate}
+    \item[\textbf{(a)}] \textbf{(2 points) Let $f(n) = 2n^3 + 7n^2$ and prove
+    that $f(n) \in O(n^3)$} \\
+    
+    \begin{align}
+        0 \le 2n^3 + 7n^2 \le cn^3 \\
+        0 \le 2 + \frac{7}{n} \le c \\
+    \end{align}
+    \begin{flalign}
+        &&  0 & \le 2 + \frac{7}{n} & 2 + \frac{7}{n} \le c && \\ 
+        && -2 & \le \frac{7}{n}     & \frac{7}{n} \le c - 2 && \\
+        && n & \ge \frac{-7}{2}     & \frac{7}{c-2} \le n; c \neq 2 && 
+    \end{flalign}
+    So $n_{0}(c) = \frac{7}{c-2}$. However, this could be further restrained, as
+    when $0 < c < 2, \frac{7}{c-2} < 0$. This is disallowed, as $n > 0$ and the
+    inequality would allow $n = 0$. As such, $c > 2$. So 
+    $$
+        n_{0}(c) = \ceil{\frac{7}{c-2}}, c > 2 \implies f(n) \in O(n^3)
+    $$
+    
+    \item[\textbf{(b)}] \textbf{(2 points) Let $f(n) = 2n^3 - 7n^2$ and prove
+    that $f(n) \in \Omega(n^3)$}
+    
+    \begin{align}
+        0 \le cn^3 \le 2n^3 - 7n^2 \\
+        0 \le c \le 2 - \frac{7}{n} 
+    \end{align}
+    \begin{flalign}
+        && 0 & < c & c &\le 2 - \frac{7}{n} && \\
+        &&   &     & \frac{7}{n} & \le 2 - c && \\
+        &&   &     & \frac{7}{2-c} & \le n, c \neq 2 && 
+    \end{flalign}
+    Similar to above, $c$ can be constrained further since when $c > 2$,
+    $\frac{7}{2-c} < 0 \implies n < 0$ at some point which is impossible. So
+    $$
+        n_{0}(c) = \ceil{\frac{7}{2-c}}, 0 < c < 2
+    $$
+    
+    \item[\textbf{(c)}] \textbf{(2 points) Let $f(n) = 3n^3 + n^2$ and prove
+    that $f(n) \in O(n^4)$}
+    
+    \begin{align}
+        0 \le 3n^3 + n^2 \le cn^4
+    \end{align}
+    \begin{flalign}
+        && 0 & \le 3n^3 + n^2 & 3n^3 + n^2 & \le cn^4 && \\
+        && 0 & \le n^2(3n+1)  & 3n + 1 & \le cn^2 && 
+    \end{flalign}
+    \begin{flalign}
+        && 0 & \le n^2 & 0 & \le 3n + 1 & \frac{3n+1}{n^2} & \le c && \\
+        && 0 & \le n & \frac{-1}{3} & \le n & & &&
+    \end{flalign}
+    Unfortunately this is where I am stuck. My inclination would be to attempt
+    to solve for \mbox{$cn^2 - 3n - 1 \ge 0$} with the quadratic equation, but I
+    have never done it with inequalities, so I can not assume \mbox{$n \ge
+    \frac{3 \pm\sqrt{9 + 4c}}{2c}$} is supposedly the correct answer. Wolfram
+    Alpha seems to indicate \mbox{$n > \frac{\sqrt{\frac{4c+9}{c^2}}c + 3}{2c}, 
+    c > 0$} which would give me a $n_{0}(c)$ but I have no idea how this is
+    determined. 
+\end{enumerate}
+%\subsection{}
+
+\section{Sources}
+\begin{itemize}
+    \item Weisstein, Eric W. "Stirling's Approximation." From Mathworld--A 
+    Wolfram Web Resource. 
+    
+    \texttt{http://mathworld/wolfram.com/StirlingsApproximation.html}    
+\end{itemize}
+
+
+\end{document}
+

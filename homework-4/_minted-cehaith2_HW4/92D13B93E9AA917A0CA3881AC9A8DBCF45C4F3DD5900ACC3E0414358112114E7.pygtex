@@ -1,0 +1,8 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{sort} \PYG{n}{the} \PYG{n}{edges} \PYG{n}{into} \PYG{n}{nonincreasing} \PYG{n}{order} \PYG{n}{of} \PYG{n}{edge} \PYG{n}{weights} \PYG{n}{w}
+\PYG{n}{T} \PYG{o}{=} \PYG{n}{E}
+\PYG{k}{for} \PYG{n}{each} \PYG{n}{edge} \PYG{n}{e}\PYG{p}{,} \PYG{n}{taken} \PYG{n}{in} \PYG{n}{nonincreasing} \PYG{n}{order} \PYG{n}{by} \PYG{n+nl}{weight}\PYG{p}{:}
+    \PYG{k}{if} \PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{p}{\PYGZob{}}\PYG{n}{e}\PYG{p}{\PYGZcb{}} \PYG{n}{is} \PYG{n}{a} \PYG{n}{connected} \PYG{n+nl}{graph}\PYG{p}{:}
+        \PYG{n}{T} \PYG{o}{=} \PYG{n}{T} \PYG{o}{\PYGZhy{}} \PYG{p}{\PYGZob{}}\PYG{n}{e}\PYG{p}{\PYGZcb{}}
+\PYG{k}{return} \PYG{n}{T}
+\end{Verbatim}
